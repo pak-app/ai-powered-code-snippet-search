@@ -1,0 +1,16 @@
+{
+    "name": "AI-Powered Code Snipest Search Engine",
+    "server": {
+        "port": 3000
+    },
+    "database": {
+        "host": null,
+        "port": null,
+        "logToDb": false,
+        "dbname": "search_engine_cs"
+    },
+    "jwt": {
+        "secretKey": "04468352DA912C469D242DBC0CF4EB2B",
+        "expireIn": "12h"
+    }
+}

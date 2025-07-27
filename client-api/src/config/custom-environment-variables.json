@@ -1,0 +1,9 @@
+{
+    "database": {
+        "host": "DATABASE_HOST_NAME",
+        "port": "DATABASE_PORT"
+    },
+    "jwt": {
+        "secretKey": "JWT_SECRET_KEY"
+    }
+}
