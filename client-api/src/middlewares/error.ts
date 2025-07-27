@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
+import { AppError } from '../utils/errors';
 
 export default function error(
-    error: any,
+    error: AppError,
     _req: Request,
     res: Response,
     _next: NextFunction
@@ -12,7 +13,6 @@ export default function error(
     const status = error.status || 'error';
 
     console.error(error.stack);
-    // console.log(error);
 
     res.status(errorStatusCode).send({
         status: status,
