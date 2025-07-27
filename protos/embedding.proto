@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package embed;
+
+service EmbedService {
+  rpc GenerateEmbedding (EmbedRequest) returns (EmbedResponse);
+}
+
+message EmbedRequest {
+  string code = 1;
+  string language = 2;
+  string description = 3;
+  repeated string tags = 4;
+}
+
+message EmbedResponse {
+  repeated float embedding = 1;
+}
