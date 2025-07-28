@@ -21,7 +21,7 @@ interface EmbedServiceClient {
 }
 
 // Configuration
-const PROTO_PATH: string = path.resolve(__dirname, '../../protos/embed.proto');
+const PROTO_PATH: string = path.resolve(__dirname, '../../../protos/embedding.proto');
 const GRPC_SERVER: string = process.env.GRPC_SERVER || 'localhost:50051';
 
 // Load gRPC package definition

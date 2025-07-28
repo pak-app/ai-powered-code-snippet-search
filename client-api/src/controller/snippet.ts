@@ -24,9 +24,9 @@ export async function createSnippet(
     });
 }
 
-export function searchSnippet(
-    req: Request,
-    res: Response
-){
+// export function searchSnippet(
+//     req: Request,
+//     res: Response
+// ){
 
-}
+// }

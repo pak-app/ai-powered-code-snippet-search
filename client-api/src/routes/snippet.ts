@@ -1,8 +1,9 @@
 import { Router } from 'express';
+import * as controller from '../controller/snippet';
 
 const router = Router();
 
-router.post('/snippet/create');
-router.get('/snippet/search');
+router.post('/create', controller.createSnippet);
+// router.get('/snippet/search');
 
 export default router;
