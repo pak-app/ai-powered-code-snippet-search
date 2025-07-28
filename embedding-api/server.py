@@ -24,7 +24,7 @@ class EmbedService(embed_pb2_grpc.EmbedServiceServicer):
 def run_serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     embed_pb2_grpc.add_EmbedServiceServicer_to_server(EmbedService(), server)
-    server.add_insecure_port('[::]:50051')
+    server.add_insecure_port('127.0.0.1:50051')
     server.start()
     print("gRPC server started on port 50051")
     server.wait_for_termination()
