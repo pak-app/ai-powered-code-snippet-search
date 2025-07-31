@@ -3,6 +3,8 @@ import { generateEmbeddingAsync } from '../utils/gRPCClient';
 import { SnippetPOSTBody } from '../types/createSnippet';
 import { AppError } from '../utils/errors';
 import { EmbeddingResponse } from '../types/gRPCClient';
+import Snippet from '../models/snippet';
+import ISnippet from '../types/snippetDbModel';
 
 export async function createSnippet(
     req: Request,
@@ -17,11 +19,14 @@ export async function createSnippet(
     );
     
     if(!gRPCResponse)
-        throw new AppError('Unexpected error');
+        throw new AppError('Embedding prcess failed, please check your description');
 
-    res.status(200).json({
-        embed: gRPCResponse.embedding
-    });
+    const result: ISnippet = await new Snippet({
+        ...body,
+        embedding: gRPCResponse
+    }).save();
+
+    res.status(200).json(result);
 }
 
 // export function searchSnippet(
