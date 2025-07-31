@@ -1,15 +1,6 @@
 // models/Snippet.ts
-import mongoose, { Schema, Document } from "mongoose";
-
-export interface ISnippet extends Document {
-    code: string;
-    language: string;
-    description: string;
-    tags: string[];
-    embedding: number[],
-    createdAt: Date;
-    updatedAt: Date;
-}
+import mongoose, { Schema } from "mongoose";
+import ISnippet from '../types/snippetDbModel';
 
 const SnippetSchema: Schema = new Schema<ISnippet>(
     {
