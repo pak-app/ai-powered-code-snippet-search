@@ -4,9 +4,9 @@
         "port": 3000
     },
     "database": {
-        "host": "null",
-        "port": "null",
+        "host": "localhost",
+        "port": 27017,
         "logToDb": false,
-        "dbname": "search_engine_cs"
+        "dbname": "search_engine_cs_test"
     }
 }
