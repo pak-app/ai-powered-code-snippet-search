@@ -6,7 +6,7 @@ const createSnippetSchema = Joi.object({
     description: Joi.string().required().trim(),
     language: Joi.string().trim(),
     tags: Joi.array().items(
-        Joi.string().min(2).trim()
+        Joi.string().min(1).trim()
     ).required().min(1)
 });
 
