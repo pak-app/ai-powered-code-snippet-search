@@ -6,6 +6,6 @@ import createSnippetSchema from '../utils/joiBodies/createSnippet';
 const router = Router();
 
 router.post('/create', validateBody(createSnippetSchema, 'body'), controller.createSnippet);
-// router.get('/snippet/search');
+router.get('/', controller.searchSnippet);
 
 export default router;
