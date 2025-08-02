@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import { generateEmbeddingAsync } from '../utils/gRPCClient';
+import getEmbeddingArray from '../utils/gRPCClient';
 import { SnippetPOSTBody } from '../types/createSnippet';
 import { AppError } from '../utils/errors';
-import { EmbeddingResponse } from '../types/gRPCClient';
 import Snippet from '../models/snippet';
 import ISnippet from '../types/snippetDbModel';
 
@@ -12,18 +11,14 @@ export async function createSnippet(
 ) {
     const body: SnippetPOSTBody = req.body;
 
-    const deadline = new Date(Date.now() + 10000);
-    const gRPCResponse: EmbeddingResponse = await generateEmbeddingAsync(
-        body,
-        { deadline }
-    );
+    const embeddingArray = await getEmbeddingArray(body);
     
-    if(!gRPCResponse)
+    if(!embeddingArray)
         throw new AppError('Embedding prcess failed, please check your description');
 
     const result: ISnippet = await new Snippet({
         ...body,
-        embedding: gRPCResponse.embedding
+        embedding: embeddingArray
     }).save();
 
     res.status(201).json(result);
