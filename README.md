@@ -61,6 +61,13 @@ Here is a diagram illustrating the architecture:
 -   **API Specification**:
     -   Protobuf (for gRPC)
 
+## Sentence Transformer Model
+
+The `embedding-api` uses the `all-MiniLM-L6-v2` model from the `sentence-transformers` library to generate vector embeddings. This model is a high-performance, lightweight model that is well-suited for a variety of sentence and text embedding tasks.
+
+-   **Model**: `all-MiniLM-L6-v2`
+-   **Hugging Face URL**: [https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
+
 ## Getting Started
 
 ### Prerequisites
