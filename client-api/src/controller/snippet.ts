@@ -23,10 +23,10 @@ export async function createSnippet(
 
     const result: ISnippet = await new Snippet({
         ...body,
-        embedding: gRPCResponse
+        embedding: gRPCResponse.embedding
     }).save();
 
-    res.status(200).json(result);
+    res.status(201).json(result);
 }
 
 // export function searchSnippet(

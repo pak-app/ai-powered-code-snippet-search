@@ -12,7 +12,7 @@ export default function error(
     const message = error.message || 'Something went wrong on the server.';   // Set the error message
     const status = error.status || 'error';
 
-    console.error(error.stack);
+    console.error(error);
 
     res.status(errorStatusCode).send({
         status: status,
