@@ -12,10 +12,10 @@ model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 class EmbedService(embed_pb2_grpc.EmbedServiceServicer):
     def GenerateEmbedding(self, request, context):
         # You can do embedding logic here
-        print("Received:", request.code)
-        description = request.description
+        print("Received:", len(request.codes))
+        codes = request.codes
         
-        embedding_array = model.encode(description)
+        embedding_array = model.encode(codes)
                
         return embed_pb2.EmbedResponse(
             embedding=embedding_array  # dummy data

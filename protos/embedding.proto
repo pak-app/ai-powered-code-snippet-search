@@ -7,12 +7,15 @@ service EmbedService {
 }
 
 message EmbedRequest {
-  string code = 1;
-  string language = 2;
-  string description = 3;
-  repeated string tags = 4;
+  repeated string codes = 1;
 }
 
-message EmbedResponse {
+// Represents a single vector (array of floats)
+message EmbeddingVector {
   repeated float embedding = 1;
+}
+
+// Represents a list of vectors (list of arrays of floats)
+message EmbedResponse {
+  repeated EmbeddingVector embeddingList = 1;
 }
