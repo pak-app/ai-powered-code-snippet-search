@@ -1,5 +1,8 @@
 // Response type
 export interface EmbeddingResponse {
-    embedding: number[];
+    embedding: number[][];
 }
 
+export interface EmbeddingRequest {
+    description: string
+}

@@ -19,7 +19,7 @@ export async function createSnippet(
 ) {
     const body: SnippetPOSTBody = req.body;
 
-    const embeddingArray = await getEmbeddingArray(body);
+    const embeddingArray = await getEmbeddingArray(body.description);
 
     if (!embeddingArray)
         throw new AppError('Embedding prcess failed, please check your description');

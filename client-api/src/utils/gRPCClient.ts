@@ -2,16 +2,9 @@ import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
 import path from 'path';
 import { promisify } from 'util';
-import { EmbeddingResponse } from '../types/gRPCClient';
-import { SnippetPOSTBody } from '../types/createSnippet';
+import { EmbeddingResponse, EmbeddingRequest } from '../types/gRPCClient';
 
 // Define gRPC service interfaces
-interface EmbeddingRequest {
-    code: string,
-    description: string,
-    tags: string[],
-    language: string
-}
 
 interface EmbedServiceClient {
     GenerateEmbedding: (
@@ -44,7 +37,7 @@ const client: EmbedServiceClient = new embedProto.EmbedService(
 // Promisify gRPC method for async/await
 const generateEmbeddingAsync = promisify(client.GenerateEmbedding).bind(client);
 
-export default async function getEmbeddingArray(body: SnippetPOSTBody) {
+export default async function getEmbeddingArray(body: EmbeddingRequest) {
     const deadline = new Date(Date.now() + 10000);
     const gRPCResponse: EmbeddingResponse = await generateEmbeddingAsync(
         body,

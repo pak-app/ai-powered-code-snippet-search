@@ -5,6 +5,6 @@ export interface SnippetPOSTBody {
     language: string;
 };
 
-export interface SnippetPOSTResponse extends SnippetPOSTBody {
+export interface SnippetPOSTResponse {
     embedding: number[]
 };
